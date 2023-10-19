@@ -1,24 +1,9 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+# Menggunakan : 
+  * ruby 3.2.2 (2023-03-30 revision e51014f9c0) [arm64-darwin22]
+  * rails 7
+  * admin theme adminlte free 
+  * database postgresql
+  * Jawaban Doc ada di Technical Test RoR.pdf
+  

@@ -1,0 +1,13 @@
+<% if current_user %>
+<%= current_user.role %>
+<%= link_to "logout", destroy_user_session_path, method: :delete, data: {turbo_method: :delete} %>
+<% else %>
+<%= link_to "login", new_user_session_path %>
+<% end %> 
+
+
+<h1>Welcome to Mini Project </h1>
+<h3>Instructions</h3>
+<h4>. Click Create Book and Fill out the form;</h4>
+<h4>. Enter a VALID EMAIL ADDRESS, please;</h4>
+<%= button_to("Create Book", new_book_path,   method: :get,  class:"btn btn-primary") %>

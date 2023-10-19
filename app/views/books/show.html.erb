@@ -1,0 +1,26 @@
+<div>
+<div class="card">
+    <div class="card-header">
+    <h3 class="card-title">
+        <i class="fas fa-text-width"></i>
+        Detail 
+    </h3>
+    </div>
+    <!-- /.card-header -->
+    <div class="card-body">
+    <dl class="row">
+        <dt class="col-sm-4">Judul Buku</dt>
+        <dd class="col-sm-8"><%= @book.judul %> </dd>
+        <dt class="col-sm-4">Tahun Terbit</dt>
+        <dd class="col-sm-8"><%= @book.tahun_terbit.strftime("%B %d, %Y") %> </dd>       
+        <dt class="col-sm-4">Email</dt>
+        <dd class="col-sm-8"><%= @book.email %> </dd>
+        <dt class="col-sm-4">Author</dt>
+        <dd class="col-sm-8"><%= @book.author.name %> </dd>
+    </dl>
+    </div>
+    <!-- /.card-body -->
+</div>
+    <%= link_to "back", books_path, class: "btn btn-success fas fa-back" %>   
+<!-- /.card -->
+</div>

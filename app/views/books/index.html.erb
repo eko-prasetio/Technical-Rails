@@ -1,0 +1,45 @@
+<div class="card">
+    <div class="card-header">
+    <h3 class="card-title">List Books</h3>
+    </div>
+    <!-- /.card-header -->
+    <div class="card-body">
+    <table class="table table-bordered">
+        <thead>
+        <tr>
+            <th style="width: 10px">No</th>
+            <th>Judul Buku</th>
+            <th>Tahun Terbit</th>
+            <th>Email</th>
+            <th>Author</th>
+            <th>Action</th>
+        </tr>
+        </thead>
+        <tbody>
+      <% @books.includes(:author).all.each_with_index do |book, index| %>
+        <tr>
+            <td><%= index + 1 %> </td>
+            <td><%= book.judul %> </td>
+            <td><%= book.tahun_terbit.strftime("%B %d, %Y") %> </td>
+            <td><%= book.email %></td>
+            <td><%= book.author.name %></td>
+            <td>
+                <%= link_to "", "books/#{book.id}", class: "btn btn-primary far fa-eye" %>    
+                 <% if current_user&.admin?%>
+                <%= link_to "", edit_book_path(book), class: "btn btn-success fas fa-edit" %>           
+                <%= link_to "", "book/#{book.id}/delete", method: :delete, class: "btn btn-danger far fa-trash-alt"%> 
+                <% end %>
+            </td>
+        </tr>        
+    <% end %>
+        </tbody>
+    </table>
+    </div>
+    <!-- /.card-body -->
+    <div class="card-footer clearfix">
+    <ul class="pagination pagination-sm m-0 float-right">
+        <%= paginate @books %>      
+    </ul>
+    </div>
+</div>
+<!-- /.card -->

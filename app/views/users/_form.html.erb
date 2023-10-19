@@ -1,0 +1,45 @@
+<% if @user.errors.any? %>
+  <div class="alert alert-danger" role="alert">
+    <ul>
+      <% @user.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
+<div class="card card-primary">
+    <div class="card-header">
+    <h3 class="card-title">Add User</h3>
+    </div>
+    <!-- /.card-header -->
+    <!-- form start -->
+    <%= form_with(model: @user, local: true) do |form| %>
+    <div class="card-body">
+        <div class="form-group">
+        <label>Username</label>
+        <%= form.text_field :username ,class:"form-control col-md-2", placeholder: "Username" %>
+        </div>
+        <div class="form-group">
+        <label>Email</label>
+        <%= form.text_field :email, class:"form-control col-md-2", placeholder: "Email", type: "email" %>
+        </div>  
+        <div class="form-group">
+        <label>Password</label>
+        <% if @minimum_password_length %>
+        <em>(<%= @minimum_password_length %> characters minimum)</em>
+        <% end %><br />
+        <%= form.password_field :password, class:"form-control col-md-2", placeholder: "Password", type: "password" %>
+        </div>  
+        <div class="form-group">        
+        <label>Password Confirmation</label>
+        <%= form.password_field :password_confirmation, class:"form-control col-md-2", placeholder: "Password Confirmation", type: "password" %>
+        </div>  
+
+    </div>
+    <!-- /.card-body -->
+
+    <div class="card-footer">
+        <%= form.submit "Submit", class:"btn btn-primary", type: "submit" %>
+    </div>
+    <% end %>
+</div>

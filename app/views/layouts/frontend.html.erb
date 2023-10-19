@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Blog</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+    <%= stylesheet_link_tag "https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback", "data-turbo-track": "reload" %>
+    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <%= stylesheet_link_tag "adminlte", "data-turbo-track": "reload" %>
+    <%= stylesheet_link_tag "all", "data-turbo-track": "reload" %>
+  </head>
+  <body class="hold-transition login-page">
+    <div class="login-box">
+    <div class="login-logo">
+        <a href="../../index2.html"><b>PRETEST</b>ROR</a>
+    </div>
+    <!-- /.login-logo -->
+    <div class="card">
+        <div class="card-body login-card-body">
+        <p class="login-box-msg">Sign in to start your session</p>
+        <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+            <div class="input-group mb-3">
+            <%= f.email_field :email, autofocu: true, autocomplete: "email", placeholder: "Email", type: "email", class: "form-control" %>
+            <div class="input-group-append">
+                <div class="input-group-text">
+                <span class="fas fa-envelope"></span>
+                </div>
+            </div>
+            </div>
+            <div class="input-group mb-3">
+            <%= f.password_field :password, autocomplete: "current-password", class: "form-control", placeholder: "Password", type: "password" %>
+            <div class="input-group-append">
+                <div class="input-group-text">
+                <span class="fas fa-lock"></span>
+                </div>
+            </div>
+            </div>
+            <div class="row">
+            <% if devise_mapping.rememberable?%>
+            <div class="col-8">
+                <div class="icheck-primary">
+                <%= f.check_box :remember_me, type: "checkbox" %>
+                <label for="remember">
+                    Remember Me
+                </label>
+                </div>
+            </div>
+            <% end %>
+            <!-- /.col -->
+            <div class="col-4">
+                <%= f.submit "Log in", disable_with: 'Log ining...', class: "btn btn-primary btn-block", type: "submit" %>
+            </div>
+            <!-- /.col -->
+            </div>
+        </form>
+        <% end %>
+
+        <div class="social-auth-links text-center mb-3">
+            <p>- OR -</p>            
+        </div>
+        <!-- /.social-auth-links -->
+        <p class="mb-0">
+            <%= link_to "Register a new membership", users_path,  class: "text-center" %>
+        </p>
+        </div>
+        <!-- /.login-card-body -->
+    </div>
+    </div>
+    <!-- /.login-box -->
+    <%= javascript_include_tag "application", "data-turbo-track": "reload", defer: true %>
+    <%= javascript_include_tag "jquery", "data-turbo-track": "reload", defer: true %>
+    <%= javascript_include_tag "adminlte", "data-turbo-track": "reload", defer: true %>
+  </body>
+</html>

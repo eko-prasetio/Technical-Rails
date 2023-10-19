@@ -1,0 +1,41 @@
+<% if @book.errors.any? %>
+  <div class="alert alert-danger" role="alert">
+    <ul>
+      <% @book.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
+<div class="card card-primary">
+    <div class="card-header">
+    <h3 class="card-title">Add Book</h3>
+    </div>
+    <!-- /.card-header -->
+    <!-- form start -->
+    <%= form_with(model: @book, local: true) do |form| %>
+    <div class="card-body">
+        <div class="form-group">
+        <label>Judul</label>
+        <%= form.text_field :judul ,class:"form-control", placeholder: "Judul Buku" %>
+        </div>
+        <div class="form-group">
+        <label>Tahun Terbit</label>
+        <%= form.date_field :tahun_terbit, class:"form-control col-md-2", placeholder: "Tahun Terbit" %>
+        </div>
+        <div class="form-group">
+        <label>Email</label>
+        <%= form.text_field :email, class:"form-control col-md-2", placeholder: "Email", type: "email" %>
+        </div>
+        <div class="form-group">
+        <label>Author</label>
+        <%= form.collection_select(:author_id, Author.all, :id, :name, { prompt: 'Select an author' }, {class: "form-control select2"}) %>    
+    </div>       
+    </div>
+    <!-- /.card-body -->
+
+    <div class="card-footer">
+        <%= form.submit "Submit", class:"btn btn-primary", type: "submit" %>
+    </div>
+    <% end %>
+</div>
